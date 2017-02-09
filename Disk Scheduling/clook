@@ -1,0 +1,19 @@
+import sys
+
+f = open(sys.argv[1])
+start = int(f.readline())
+request = f.readline()
+request = request.split(",")
+request = map(eval,request)
+
+request = sorted(request)
+last = request[len(request)-1]
+first = request[0]
+res = last - start
+if (request[0]<start):
+    i = 0
+    while (request[i]<start):
+        i += 1
+    res += last - first + request[i-1] - first
+    
+print res
