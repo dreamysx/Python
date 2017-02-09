@@ -1,0 +1,14 @@
+import sys
+
+f = open(sys.argv[1])
+start = int(f.readline())
+request = f.readline()
+request = request.split(",")
+request = map(eval,request)
+
+time = 0
+for i in request:
+    seektime = abs( start - i )
+    start = i
+    time += seektime
+print time
