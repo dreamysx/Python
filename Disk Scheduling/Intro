@@ -1,0 +1,7 @@
+These python programs implement six main disk scheduling algorithms.
+In programs, we assume that the platter has 200 tracks, numbered from 0 to 199 and the disk is currently idle.
+You should run your script like this:
+python algorithm_name.py input_file.txt
+Data in input file sohuld be like this:
+Startting track(0-199)
+A sequence of requests separated by ",".
