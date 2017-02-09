@@ -1,0 +1,44 @@
+import sys
+
+f = open(sys.argv[1])
+start = int(f.readline())
+request = f.readline()
+request = request.split(",")
+request = map(eval,request)
+
+time = 0
+dire = 0
+while request:
+    seektime = []
+    for i in request:
+        seektime.append(abs(start - i))
+    seektime.sort()
+    # print time
+    if ( start + seektime[0] in request ) and ( start - seektime[0] in request ):
+        if time == 0:
+            if abs(start - 0) <= abs(start - 199):
+                start = start - seektime[0]
+                request.remove(start)
+                dire = 0
+            else:
+                start = start + seektime[0]
+                request.remove(start)
+                dire = 1
+        else:
+            if dire == 0:
+                start = start - seektime[0]
+                request.remove(start)
+            else:
+                start = start + seektime[0]
+                request.remove(start)
+    elif start + seektime[0] in request:
+        start = start + seektime[0]
+        request.remove(start)
+        dire = 1
+    else:
+        start = start - seektime[0]
+        request.remove(start)
+        dire = 0
+    # print request
+    time = time + seektime[0]
+print time
